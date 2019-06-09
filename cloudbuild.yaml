@@ -1,4 +1,22 @@
 steps:
+  - name: gcr.io/cloud-builders/mvn
+    dir: /root
+    entrypoint: bash
+    args:
+      - -c
+      - # Links the Docker config to /root/.docker/config.json so Jib picks it up.
+        # Note that this is only a temporary workaround.
+        # See https://github.com/GoogleContainerTools/jib/pull/1479.
+        |
+        mkdir .docker &&
+        ln -s $$HOME/.docker/config.json .docker/config.json
+    volumes:
+      - name: user.home
+        path: /root
+
   - name: maven:3.6.0-jdk-11-slim
     entrypoint: 'mvn'
     args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:build', '-Dimage=gcr.io/${PROJECT_ID}/app']
+    volumes:
+      - name: user.home
+        path: /root
