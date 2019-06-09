@@ -65,7 +65,7 @@
                 <version>${jib.version}</version>
                 <configuration>
                     <to>
-                        <image>gcr.io/${artifactId}/app:${maven.build.timestamp}</image>
+                        <image>gcr.io/${project.artifactId}/app:${maven.build.timestamp}</image>
                         <credHelper>osxkeychain</credHelper>
                     </to>
                 </configuration>
