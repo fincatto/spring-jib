@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SpringJibApplicationTests {
     
     @Test
-    void contextLoads() {
-        log.debug("Iniciando contexto spring...");
+    void fakeTest() {
+        log.debug("Initializing Spring Context...");
     }
 }
