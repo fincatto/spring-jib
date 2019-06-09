@@ -29,7 +29,7 @@ steps:
       - -X
 
       # Sets the target image reference to push to.
-      - -Dimage=gcr.io/${PROJECT_ID}/app:${BUILD_ID},latest
+      - -Dimage=gcr.io/${PROJECT_ID}/app:${BUILD_ID}:latest
 
     volumes:
       - name: user.home
