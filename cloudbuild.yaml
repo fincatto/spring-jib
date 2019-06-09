@@ -1,5 +1,7 @@
 steps:
-  - name: gcr.io/cloud-builders/mvn
+
+  - # Uses the Cloud Builder Maven image since it is cached.
+    name: gcr.io/cloud-builders/mvn
     dir: /root
     entrypoint: bash
     args:
@@ -10,13 +12,25 @@ steps:
         |
         mkdir .docker &&
         ln -s $$HOME/.docker/config.json .docker/config.json
+
     volumes:
       - name: user.home
         path: /root
 
-  - name: maven:3.6.0-jdk-11-slim
-    entrypoint: 'mvn'
-    args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:build', '-Dimage=gcr.io/${PROJECT_ID}/app']
+  - # Uses the Cloud Builder Maven image.
+    name: gcr.io/cloud-builders/mvn
+    args:
+      # Compiles the application.
+      - compile
+
+      # Runs the Jib build by using the latest version of the plugin.
+      # To use a specific version, configure the plugin in the pom.xml.
+      - com.google.cloud.tools:jib-maven-plugin:build
+      - -X
+
+      # Sets the target image reference to push to.
+      - -Dimage=gcr.io/${PROJECT_ID}/app
+
     volumes:
       - name: user.home
         path: /root
