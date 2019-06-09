@@ -1,4 +1,4 @@
 steps:
   - name: maven:3.6.0-jdk-11-slim
     entrypoint: 'mvn'
-    args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:build', '-X', '-Dimage=gcr.io/${PROJECT_ID}/app']
+    args: ['compile', 'com.google.cloud.tools:jib-maven-plugin:build', '-Dimage=gcr.io/${PROJECT_ID}/app']
