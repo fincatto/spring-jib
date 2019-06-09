@@ -58,18 +58,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>${jib.version}</version>
-                <configuration>
-                    <to>
-                        <image>gcr.io/${project.artifactId}/app:${maven.build.timestamp}</image>
-                        <credHelper>osxkeychain</credHelper>
-                    </to>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.google.cloud.tools</groupId>-->
+<!--                <artifactId>jib-maven-plugin</artifactId>-->
+<!--                <version>${jib.version}</version>-->
+<!--                <configuration>-->
+<!--                    <to>-->
+<!--                        <image>gcr.io/${project.artifactId}/app:${maven.build.timestamp}</image>-->
+<!--                        <credHelper>osxkeychain</credHelper>-->
+<!--                    </to>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
