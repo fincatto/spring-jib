@@ -23,7 +23,7 @@ public class PersonRestController implements Loggable {
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<List<Person>> listAll() {
-        this.getLogger().debug("Listing persons...");
+        this.getLogger().debug("Listing all persons...");
         return new ResponseEntity<>(Arrays.asList(
                 new Person().setId(1L).setName("John Doe"),
                 new Person().setId(2L).setName("Jane Doe")
