@@ -30,7 +30,7 @@ steps:
 
       # Sets the target image reference to push to.
       - -Dimage=gcr.io/${PROJECT_ID}/app
-      - -Dtags=${BUILD_ID}
+      - -Dtags=${BUILD_ID},teste1,teste2
 
     volumes:
       - name: user.home
