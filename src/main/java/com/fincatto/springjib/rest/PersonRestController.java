@@ -17,7 +17,7 @@ public class PersonRestController implements Loggable {
     
     @GetMapping
     public ResponseEntity<String> status() {
-        this.getLogger().debug("Reading status...");
+        this.getLogger().debug("Reading API status...");
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
     
