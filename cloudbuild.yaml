@@ -10,7 +10,7 @@ steps:
       - -c
       - |
         ln -s /builder/home/.docker /root/.docker &&
-        mvn -B compile jib:build -Dimage=gcr.io/$PROJECT_ID/app -Dtags=${SHORT_SHA},teste1,teste2
+        mvn -B compile com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$PROJECT_ID/app -Dtags=${SHORT_SHA},teste1,teste2
 
 #  - #step 1: Uses the Cloud Builder Maven image since it is cached.
 #    name: gcr.io/cloud-builders/mvn
