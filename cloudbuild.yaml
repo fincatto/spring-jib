@@ -1,6 +1,6 @@
-substitutions:
-  _DF_ZONE: us-central1-a
-  _DF_CLUSTER: spring-app-cluster
+#substitutions:
+#  _DF_ZONE: us-central1-a
+#  _DF_CLUSTER: spring-app-cluster
 
 steps:
   - #step 1: Uses the Cloud Builder Maven image since it is cached.
@@ -52,14 +52,14 @@ steps:
 #      'set',
 #      'image',
 #      'deployment',
-#      'spring-jib-app',
+#      'spring-jib-deployment',
 #      'spring-jib-app=gcr.io/$PROJECT_ID/app:$SHORT_SHA'
 #    ]
 #    env:
 #      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
 #      - 'CLOUDSDK_CONTAINER_CLUSTER=spring-app-cluster'
 
-images: [
-  'gcr.io/$PROJECT_ID/app:$SHORT_SHA',
-  'gcr.io/$PROJECT_ID/app:latest'
-]
+#images: [
+#  'gcr.io/$PROJECT_ID/app:$SHORT_SHA',
+#  'gcr.io/$PROJECT_ID/app:latest'
+#]
