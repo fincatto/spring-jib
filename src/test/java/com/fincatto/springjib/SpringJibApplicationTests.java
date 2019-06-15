@@ -8,6 +8,6 @@ class SpringJibApplicationTests implements Loggable {
     
     @Test
     void fakeTest() {
-        getLogger().debug("Initializing Spring Context...");
+        getLogger().debug("Fake test 1");
     }
 }
