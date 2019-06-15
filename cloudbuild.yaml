@@ -35,3 +35,8 @@ steps:
     volumes:
       - name: user.home
         path: /root
+
+images: [
+  'gcr.io/$PROJECT_ID/app:$BUILD_ID',
+  'gcr.io/$PROJECT_ID/app:latest'
+]
