@@ -1,6 +1,6 @@
 substitutions:
-  DF_ZONE: us-central1-a
-  DF_CLUSTER: spring-app-cluster
+  _DF_ZONE: us-central1-a
+  _DF_CLUSTER: spring-app-cluster
 
 steps:
   - #step 1: Uses the Cloud Builder Maven image since it is cached.
