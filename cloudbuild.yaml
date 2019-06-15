@@ -33,7 +33,7 @@ steps:
 
       # Sets the target image reference to push to.
       - -Dimage=gcr.io/${PROJECT_ID}/app
-      - -Dtags=${BUILD_ID},teste1,teste2
+      - -Dtags=${SHORT_SHA},teste1,teste2
 
     volumes:
       - name: user.home
@@ -53,13 +53,13 @@ steps:
       'image',
       'deployment',
       'spring-jib-app',
-      'spring-jib-app=gcr.io/$PROJECT_ID/app:$BUILD_ID'
+      'spring-jib-app=gcr.io/$PROJECT_ID/app:$SHORT_SHA'
     ]
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=spring-app-cluster'
 
 images: [
-  'gcr.io/$PROJECT_ID/app:$BUILD_ID',
+  'gcr.io/$PROJECT_ID/app:$SHORT_SHA',
   'gcr.io/$PROJECT_ID/app:latest'
 ]
