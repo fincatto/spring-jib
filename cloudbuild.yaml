@@ -10,46 +10,7 @@ steps:
       - -c
       - |
         ln -s /builder/home/.docker /root/.docker &&
-        mvn -B compile com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$PROJECT_ID/app -Dtags=${SHORT_SHA},teste1,teste2
-
-#  - #step 1: Uses the Cloud Builder Maven image since it is cached.
-#    name: gcr.io/cloud-builders/mvn
-#    dir: /root
-#    entrypoint: bash
-#    args:
-#      - -c
-#      - # Links the Docker config to /root/.docker/config.json so Jib picks it up.
-#        # Note that this is only a temporary workaround.
-#        # See https://github.com/GoogleContainerTools/jib/pull/1479.
-#        |
-#        mkdir .docker &&
-#        ln -s $$HOME/.docker/config.json .docker/config.json
-#
-#    volumes:
-#      - name: user.home
-#        path: /root
-#
-#  - #step 2: Uses the Cloud Builder Maven image.
-#    name: gcr.io/cloud-builders/mvn
-#    args:
-#      # Compiles the application.
-#      - compile
-#
-#      # Runs the Jib build by using the latest version of the plugin.
-#      # To use a specific version, configure the plugin in the pom.xml.
-#      - com.google.cloud.tools:jib-maven-plugin:build
-#      - -X
-#
-#      # Sets the target image reference to push to.
-#      - -Dimage=gcr.io/${PROJECT_ID}/app
-#      - -Dtags=${SHORT_SHA},teste1,teste2
-#
-#    volumes:
-#      - name: user.home
-#        path: /root
-
-
-
+        mvn -B compile com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$PROJECT_ID/app -Dtags=${SHORT_SHA},latest,teste
 
 #  #step 3: Apply kubernetes config files
 #  - name: 'gcr.io/cloud-builders/kubectl'
@@ -71,7 +32,7 @@ steps:
 #      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
 #      - 'CLOUDSDK_CONTAINER_CLUSTER=spring-app-cluster'
 
-#images: [
-#  'gcr.io/$PROJECT_ID/app:$SHORT_SHA',
-#  'gcr.io/$PROJECT_ID/app:latest'
-#]
+images: [
+  'gcr.io/$PROJECT_ID/app:$SHORT_SHA',
+  'gcr.io/$PROJECT_ID/app:latest'
+]
