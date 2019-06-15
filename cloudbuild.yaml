@@ -1,6 +1,9 @@
-steps:
+substitutions:
+  DF_ZONE: us-central1-a
+  DF_CLUSTER: spring-app-cluster
 
-  - # Uses the Cloud Builder Maven image since it is cached.
+steps:
+  - #step 1: Uses the Cloud Builder Maven image since it is cached.
     name: gcr.io/cloud-builders/mvn
     dir: /root
     entrypoint: bash
@@ -17,7 +20,7 @@ steps:
       - name: user.home
         path: /root
 
-  - # Uses the Cloud Builder Maven image.
+  - #step 2: Uses the Cloud Builder Maven image.
     name: gcr.io/cloud-builders/mvn
     args:
       # Compiles the application.
@@ -36,21 +39,21 @@ steps:
       - name: user.home
         path: /root
 
-  #step 3
+  #step 3: Apply kubernetes config files
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=spring-app-cluster'
 
-  #step 4
+  #step 4: Deploy app
   - name: 'gcr.io/cloud-builders/kubectl'
     args: [
       'set',
       'image',
       'deployment',
-      '<app-name>',
-      '<app-name>=gcr.io/$PROJECT_ID/app:$BUILD_ID'
+      'spring-jib-app',
+      'spring-jib-app=gcr.io/$PROJECT_ID/app:$BUILD_ID'
     ]
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
